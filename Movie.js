@@ -31,6 +31,7 @@
             }
         });
     });
+    // allow users to add New Movies:
     const addMovie = document.getElementById('add-movie');
 
     addMovie.addEventListener('submit', (event) => {
