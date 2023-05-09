@@ -22,6 +22,8 @@
                     html += '<div class="movie">';
                     html += '<h2>' + movie.title + '</h2>';
                     html += '<p>Rating: ' + movie.rating + '</p>';
+                    html += '<button class="edit-movie-btn" data-id="' + movie.id + '">Edit</button>';
+                    html += '<button class="delete-movie-btn" data-id="' + movie.id + '">Delete</button>';
                     html += '</div>';
                 });
                 $('#movies').html(html);
