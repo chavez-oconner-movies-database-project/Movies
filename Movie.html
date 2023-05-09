@@ -10,6 +10,29 @@
 <div id="loading">Loading...</div>
 <div id="movies"></div>
 
+<form id="edit-movie-form">
+    <input type="text" name="title" placeholder="Title">
+    <input type="number" name="rating" placeholder="Rating">
+    <input type="hidden" name="id">
+    <button type="submit">Save Changes</button>
+</form>
+
+<form id="add-movie">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title">
+    <label for="director">Director:</label>
+    <input type="text" id="director" name="director">
+    <label for="rating">Rating:</label>
+    <input type="number" id="rating" name="rating">
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id">
+
+    <button type="submit">Add Movie</button>
+</form>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="Movie.js"></script>
 </body>
