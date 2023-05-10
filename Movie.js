@@ -2,6 +2,27 @@
     "use strict";
     const url = "https://light-flax-icebreaker.glitch.me/movies";
 
+    function getTMDbMovieData(title, callback) {
+        var apiKey = "e4dbb2805cd59997c3c244610a56fc61";
+        var apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + encodeURIComponent(title);
+
+        $.ajax({
+            method: "GET",
+            url: apiUrl,
+            success: function (data) {
+                if (data.results && data.results.length > 0) {
+                    callback(null, data.results[0]);
+                } else {
+                    callback("No movie data found.");
+                }
+            },
+            error: function () {
+                callback("Error fetching movie data.");
+            }
+        });
+    }
+
+
     // Main function to execute when the document is ready
     $(document).ready(function () {
         // Display a "loading..." message and hide the movie list
@@ -22,9 +43,22 @@
                     var html = "";
 
                     movies.forEach((movie) => {
-                        html += '<div class="movie">';
+                        html += '<div class="movie" data-id="' + movie.id + '">';
                         html += "<h2>" + movie.title + "</h2>";
                         html += "<p>Rating: " + movie.rating + "</p>";
+                        html += "<p>Genre: " + movie.genre + "</p>";
+                        html += '<img src="" class="movie-poster" alt="Movie Poster" />';
+
+                        // Get the movie data from the TMDb API and set the poster
+                        getTMDbMovieData(movie.title, function (err, tmdbMovieData) {
+                            if (!err) {
+                                var posterPath = "https://image.tmdb.org/t/p/w500" + tmdbMovieData.poster_path;
+                                $('.movie[data-id="' + movie.id + '"] .movie-poster').attr("src", posterPath);
+                            } else {
+                                console.error("Error fetching TMDb movie data:", err);
+                            }
+                        });
+
                         html +=
                             '<button class="edit-movie-btn" data-id="' +
                             movie.id +
@@ -99,7 +133,7 @@
                 }
             });
 
-                // Add click event listener for save edited movie button
+            // Add click event listener for save edited movie button
             $('#save-edited-movie-btn').click(function () {
                 // Get the form data
                 var formData = $('#editMovieForm').serialize();
@@ -111,8 +145,18 @@
                     url: 'https://light-flax-icebreaker.glitch.me/movies/' + $('#editMovieForm input[name="id"]').val(),
                     data: formData,
                     success: function () {
-                        // Reload the movies list
-                        getMovies();
+                        // Get the movie data from the TMDb API and set the poster
+                        getTMDbMovieData($('#addMovieForm input[name="title"]').val(), function (err, tmdbMovieData) {
+                            if (!err) {
+                                var posterPath = "https://image.tmdb.org/t/p/w500" + tmdbMovieData.poster_path;
+                                movie.poster = posterPath;
+                            } else {
+                                console.error("Error fetching TMDb movie data:", err);
+                            }
+
+                            // Reload the movies list
+                            getMovies();
+                        });
 
                         // Close the modal
                         $('#editMovieModal').modal('hide');
