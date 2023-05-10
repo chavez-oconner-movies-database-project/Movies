@@ -9,3 +9,15 @@
     font-family: 'Raleway', sans-serif;
     margin: 20px;
 }
+.edit-movie-btn {
+    margin-bottom: 10px;
+    width: 60px;
+}
+.delete-movie-btn {
+    margin: 4px;
+}
+#add-movie-btn {
+    background-color: gray;
+    margin: 20px;
+
+}
