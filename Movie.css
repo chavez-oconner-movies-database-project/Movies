@@ -6,8 +6,6 @@
     text-align: center;
 }
 .movie{
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
     justify-content: center;
     text-align: center;
 }
@@ -32,11 +30,6 @@
     margin-top: 5px;
     margin-bottom: 20px;
 }
-
-.movie-poster{
-    filter: drop-shadow(3px 3px 3px #A4BBFF);
-}
-
 #myBtn {
     display: none;
     position: fixed;
@@ -53,7 +46,7 @@
 }
 
 #myBtn:hover {
-    background-color: #555; /* Add a dark-grey background on hover */
+    background-color: #555;
     filter: drop-shadow(10px 10px 10px #A4BBFF);
 }
 @keyframes spin {
@@ -69,3 +62,40 @@
     max-width: 150%;
     animation: spin 2s linear infinite;
 }
+.movie-poster{
+    background-color: white;
+    position: relative;
+    box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5), -5px 0 7px rgba(0, 0, 0, 0.5);
+}
+/*#spotlight {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100vh;*/
+/*    background: transparent;*/
+/*    pointer-events: none;*/
+/*}*/
+/*#spotlight::before,*/
+/*#spotlight::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    width: 80vw;*/
+/*    height: 70vh;*/
+/*    background: radial-gradient(farthest-side at 40% 40%, rgba(247,250,0,0.92), transparent);*/
+/*    pointer-events: none;*/
+/*    mix-blend-mode: multiply;*/
+/*}*/
+
+/*#spotlight::before {*/
+/*    transform: rotate(30deg);  !* Adjust the rotate value to make the angle more dramatic *!*/
+/*    left: -60vw;*/
+/*    z-index: 9999;!* Move the origin point further out *!*/
+/*}*/
+
+/*#spotlight::after {*/
+/*    transform: rotate(60deg); !* Adjust the rotate value to make the angle more dramatic *!*/
+/*    right: -60vw;*/
+/*    z-index: 9999;*/
+/*}*/
