@@ -1,22 +1,24 @@
 .h1 {
     color: #307D7E;
     font-family: 'Raleway', sans-serif;
-    margin: 20px;
+    text-align: center;
 }
 
 .list-body {
+    margin-bottom: 10px;
+    font-size: 15px;
     color: #307D7E;
     font-family: 'Raleway', sans-serif;
-    margin: 20px;
+    text-align: center;
 }
 .edit-movie-btn {
-    margin-bottom: 10px;
-    width: 60px;
+    display: flex;
+    justify-content: center;
 }
 .delete-movie-btn {
-    margin: 4px;
+    text-align:  center;
+    margin: auto;
 }
-#add-movie-btn {
-    margin: 20px;
 
+#add-movie-btn {
 }
