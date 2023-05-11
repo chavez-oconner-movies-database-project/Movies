@@ -5,7 +5,12 @@
     filter: drop-shadow(10px 10px 10px #A4BBFF);
     text-align: center;
 }
-
+.movie{
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    text-align: center;
+}
 .list-body {
     margin-bottom: 10px;
     font-size: 15px;
@@ -15,9 +20,9 @@
 }
 .edit-movie-btn {
     justify-self: center;
-    margin-bottom: 10px;
+    margin: auto;
     width: 60px;
-    display: flex;
+    display: block;
     justify-content: center;
 
 }
@@ -26,7 +31,6 @@
     margin: auto;
 }
 
-}
 .movie-poster{
     filter: drop-shadow(3px 3px 3px #A4BBFF);
 }
