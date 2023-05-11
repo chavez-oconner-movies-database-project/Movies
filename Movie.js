@@ -2,6 +2,7 @@
     "use strict";
     const url = "https://light-flax-icebreaker.glitch.me/movies";
 
+    // Movie poster function
     function getTMDbMovieData(title, callback) {
         var apiKey = "e4dbb2805cd59997c3c244610a56fc61";
         var apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + encodeURIComponent(title);
@@ -21,13 +22,19 @@
             }
         });
     }
-
-
+    $(window).on('load', function() {
+        // When the page has loaded, hide the overlay
+        setTimeout(function(){
+            $('#loadingOverlay').fadeOut();
+        }, 2000);
+    });
     // Main function to execute when the document is ready
     $(document).ready(function () {
         // Display a "loading..." message and hide the movie list
         $("#loading").show();
         $("#movies").hide();
+
+
 
         // Function to get all movies and render them
         function getMovies() {
@@ -262,4 +269,25 @@
             $('#add-movie-btn').prop("disabled", false);
         });
     });
+
+    // Get button:
+    let mybutton = document.getElementById("myBtn");
+
+// scrolls down from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+// When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+    $('#myBtn').click(topFunction);
 })();
